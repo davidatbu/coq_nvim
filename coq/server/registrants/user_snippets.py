@@ -127,7 +127,7 @@ def eval_snips(
     line_count = buf_line_count(nvim, buf=buf)
     path = PurePath(normcase(buf_name(nvim, buf=buf)))
     comment_str = buf_commentstr(nvim, buf=buf)
-    clipboard = nvim.funcs.getreg()
+    clipboard = nvim.funcs.getreg("+")
     info = ParseInfo(visual="", clipboard=clipboard, comment_str=comment_str)
 
     if visual:

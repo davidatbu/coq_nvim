@@ -21,15 +21,15 @@ from .consts import GIL_SWITCH, IS_WIN, REQUIREMENTS, RT_DIR, RT_PY, TOP_LEVEL, 
 setswitchinterval(min(getswitchinterval(), GIL_SWITCH))
 
 try:
-    from shlex import join
-    from typing import Literal
-
     if version_info < (3, 8, 2):
         raise ImportError()
 except ImportError:
-    print("⛔️ python < 3.8.2", file=stderr)
+    cur_version = ".".join(map(str, version_info))
+    print(f"⛔️ Current python version {cur_version} is < 3.8.2", file=stderr)
     exit(1)
 
+from shlex import join
+from typing import Literal
 
 def parse_args() -> Namespace:
     parser = ArgumentParser()
